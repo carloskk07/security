@@ -7,9 +7,9 @@
     <style>
         /* Styles for the popup */
         .popup {
-            display: none; /* Hidden by default */
+            display: block; /* Show by default */
             position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
+            z-index: 2; /* Sit on top of the video */
             left: 0;
             top: 0;
             width: 100%; /* Full width */
@@ -29,6 +29,8 @@
             width: 80%;
             max-width: 600px;
             text-align: center;
+            position: relative;
+            z-index: 3;
         }
 
         /* Close button */
@@ -46,6 +48,15 @@
             cursor: pointer;
         }
 
+        /* Video container shown by default */
+        #videoContainer {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
         /* Image styles */
         .popup-image {
             max-width: 100%;
@@ -55,8 +66,10 @@
 </head>
 <body>
 
-<!-- Video iframe -->
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2jDBz64RSWs?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<!-- Video container -->
+<div id="videoContainer">
+    <iframe id="youtubeVideo" width="560" height="315" src="https://www.facebook.com/globalpartnersuporteoficial/videos/3716565638631327" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
 
 <!-- The popup -->
 <div id="myPopup" class="popup">
@@ -69,13 +82,6 @@
 </div>
 
 <script>
-    // Show the popup after 5 seconds
-    window.onload = function() {
-        setTimeout(function() {
-            document.getElementById("myPopup").style.display = "block";
-        }, 0001); // 5000 milliseconds = 5 seconds
-    };
-
     // Function to close the popup
     function closePopup() {
         document.getElementById("myPopup").style.display = "none";
